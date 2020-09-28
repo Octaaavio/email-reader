@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "EmailReader"
+    }
+  },
+  "defaultProject": "EmailReader",
+  "cli": {
+    "analytics": "eae9f1bd-ec28-4db4-b8b2-94210e8159cb"
+  }
 }

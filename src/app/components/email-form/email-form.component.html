@@ -1,0 +1,78 @@
+<form #emailForm="ngForm" (ngSubmit)="sendEmail(emailForm)" class="email-form">
+  <div class="form-group">
+    <label for="sender" class="col-form-label-sm">From</label>
+    <input type="text" class="form-control" required
+              [(ngModel)]="email.from"
+              name="from"
+              #from="ngModel"
+              id="from"
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+              [ngClass]="from.valid || from.pristine ? '':'is-invalid'">
+
+    <div class="invalid-feedback" *ngIf="from.touched && !from.valid">
+      <div *ngIf="from.errors.required">Sender is required.</div>
+      <div *ngIf="from.errors.pattern">Email does not match the required pattern.</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="receiver" class="col-form-label-sm">To</label>
+    <input type="text" class="form-control"
+              required
+              [(ngModel)]="email.to"
+              name="sto"
+              #sto=ngModel
+              id="receiver"
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+              [ngClass]="sto.valid || sto.pristine ? '':'is-invalid'">
+
+    <div class="invalid-feedback" *ngIf="sto.touched && !sto.valid">
+      <div *ngIf="sto.errors.required">Receiver is required.</div>
+      <div *ngIf="sto.errors.pattern">Email does not match the required pattern.</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="subject" class="col-form-label-sm">Subject</label>
+    <input type="text" class="form-control"
+              required
+              [(ngModel)]="email.subject"
+              name="subject"
+              #ssubject="ngModel"
+              id="subject"
+              [ngClass]="ssubject.valid || ssubject.pristine  ? '': 'is-invalid'">
+
+    <div class="invalid-feedback" *ngIf="ssubject.touched && !ssubject.valid">
+      <div *ngIf="ssubject.errors.required">Email cannot be sent without a subject.</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="message" class="col-form-label-sm">Message(optional)</label>
+    <textarea id="message" cols="30" rows="10" class="form-control"
+              [(ngModel)]="email.body"
+              name="message"
+              #message="ngModel">
+    </textarea>
+  </div>
+  <div class="text-right">
+    <button  class="btn btn-light spacing-right" type="button" (click)="clearEmail()">Clear email</button>
+    <button class="btn btn-primary" type="submit" [disabled]="!emailForm.form.valid">Send now</button>
+  </div>
+</form>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>From</th>
+      <th>To</th>
+      <th>Subject</th>
+      <th>Message</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let email of emailList">
+      <th>{{email.from}}</th>
+      <td>{{email.to}}</td>
+      <td>{{email.subject}}</td>
+      <td>{{email.body}}</td>
+    </tr>
+  </tbody>
+</table>
