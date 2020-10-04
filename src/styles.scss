@@ -1,3 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
-
 @import "~bootstrap/dist/css/bootstrap.css";
+
+.margin-top-lg {
+  margin-top: 80px;
+}
+
+.margin-bottom-md {
+  margin-bottom: 44px;
+}
+
+.margin-bottom-sm {
+  margin-bottom: 24px;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.btn {
+  border-radius: 6px;
+}
