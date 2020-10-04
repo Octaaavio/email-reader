@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Email } from '../../interfaces/email';
+import { EmailService } from '../../services/email.service';
 
 @Component({
   selector: 'email-form',
@@ -10,11 +11,11 @@ import { Email } from '../../interfaces/email';
 export class EmailFormComponent implements OnInit {
 
   email: Email;
-  emailList: Email[] = [];
-
+  emailList;
   @ViewChild('emailForm') emailForm: any;
 
-  constructor() {
+  constructor(emailService: EmailService) {
+    this.emailList = emailService.getEmailList();
    }
 
   ngOnInit(): void {

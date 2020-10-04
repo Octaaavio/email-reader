@@ -1,0 +1,26 @@
+<h2 class="margin-top-lg margin-bottom-md">Email List</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>From</th>
+      <th>To</th>
+      <th>Subject</th>
+      <th>Message</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let email of emailList">
+      <th>{{email.from}}</th>
+      <td>{{email.to}}</td>
+      <td>{{email.subject}}</td>
+      <td>{{email.body}}</td>
+      <td>
+        <div class="text-right">
+          <button type="button" class="btn btn-sm btn-outline-danger margin-right-xs" (click)="removeEmail(email)">Delete</button>
+          <button type="button" class="btn btn-sm btn-primary" [routerLink]="['view-email']">View email</button>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
