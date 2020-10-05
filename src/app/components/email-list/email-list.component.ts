@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { EmailService } from '../../services/email.service';
 
 @Component({
@@ -11,12 +11,16 @@ export class EmailListComponent implements OnInit {
   emailList;
   router;
   extra: string;
+  emailIndex: number;
 
-  constructor(service: EmailService, router: Router) {
+  constructor(service: EmailService, router: Router, private route: ActivatedRoute) {
     this.emailList = service.getEmailList();
+    this.router = router;
    }
 
   ngOnInit(): void {
+    let params = this.route.snapshot.paramMap;
+    this.emailIndex = +params.get('index');
     this.extra = "";
   }
 

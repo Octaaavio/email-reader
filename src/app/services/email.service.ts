@@ -21,7 +21,7 @@ export class EmailService {
     {
       from: 'example@gmail.com',
       to: 'mark_giuliana@gmail.com',
-      subject: 'the subject 2',
+      subject: 'the subject 3',
       body: '',
     }
   ];
