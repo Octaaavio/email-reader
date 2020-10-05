@@ -6,7 +6,7 @@ import { Email } from '../interfaces/email';
 })
 export class EmailFilterPipe implements PipeTransform {
   transform(emailList: Email[], extra: string): Email[] {
-    if(withFrom)
+    if(extra)
       return emailList.filter(email => (email.from == extra));
     else
     return emailList;
