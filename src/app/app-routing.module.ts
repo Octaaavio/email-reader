@@ -7,7 +7,7 @@ import { EmailComponent } from './components/email/email.component';
 const routes: Routes = [
   {path: '', component: EmailListComponent},
   {path: 'compose-email', component: EmailFormComponent},
-  {path: 'view-email', component: EmailComponent}
+  {path: 'view-email/:index', component: EmailComponent}
 ]
 
 @NgModule({

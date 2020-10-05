@@ -1,7 +1,7 @@
 <div class="margin-bottom-md">
   <h2 class="margin-top-lg">Email List</h2>
   <label for="filters" class="col-form-label-sm">Filter by</label>
-  <input type="text" class="form-control">
+  <input type="text" class="form-control" [(ngModel)]="withFrom">
 </div>
 <table class="table">
   <thead>
@@ -9,20 +9,19 @@
       <th>From</th>
       <th>To</th>
       <th>Subject</th>
-      <th>Message</th>
+      <th></th>
       <th></th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let email of emailList">
+    <tr *ngFor="let email of emailList | filter: withFrom, index as i">
       <th>{{email.from}}</th>
       <td>{{email.to}}</td>
       <td>{{email.subject}}</td>
-      <td>{{email.body}}</td>
       <td>
         <div class="text-right">
           <button type="button" class="btn btn-sm btn-outline-danger margin-right-xs" (click)="removeEmail(email)">Delete</button>
-          <button type="button" class="btn btn-sm btn-primary" [routerLink]="['view-email']">View email</button>
+          <button type="button" class="btn btn-sm btn-primary" (click)="viewEmail(i)">View email</button>
         </div>
       </td>
     </tr>

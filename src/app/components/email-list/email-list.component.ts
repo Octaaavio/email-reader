@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { EmailService } from '../../services/email.service';
 
 @Component({
@@ -8,12 +9,19 @@ import { EmailService } from '../../services/email.service';
 })
 export class EmailListComponent implements OnInit {
   emailList;
+  router;
+  extra: string;
 
-  constructor(service: EmailService) {
+  constructor(service: EmailService, router: Router) {
     this.emailList = service.getEmailList();
    }
 
   ngOnInit(): void {
+    this.extra = "";
+  }
+
+  viewEmail(emailIndex: number): void {
+    this.router.navigate(['view-email/' + emailIndex]);
   }
 
   removeEmail(email) {

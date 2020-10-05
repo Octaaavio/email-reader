@@ -2,12 +2,14 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { Email } from '../interfaces/email';
 
 @Pipe({
-  name: 'emailFilter'
+  name: 'filter',
 })
 export class EmailFilterPipe implements PipeTransform {
+  transform(emailList: Email[], extra: string): Email[] {
+    if(withFrom)
+      return emailList.filter(email => (email.from == extra));
+    else
+    return emailList;
 
-  transform(email: Email[], value: string, extra: string): Email[] {
-    return email;
   }
-
 }

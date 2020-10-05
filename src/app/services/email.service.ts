@@ -7,20 +7,20 @@ import { Email } from '../interfaces/email';
 export class EmailService {
   private emailList: Email[] = [
     {
-      from: 'example1@gmail.com',
+      from: 'this_email@gmail.com',
       to: 'mark1@gmail.com',
       subject: 'the subject 1',
       body: 'the message',
     },
     {
-      from: 'example2@gmail.com',
-      to: 'mark2@gmail.com',
+      from: 'barbarian_email@gmail.com',
+      to: 'barbaro@gmail.com',
       subject: 'the subject 2',
-      body: '',
+      body: 'This is the body of the email, right?',
     },
     {
-      from: 'example3@gmail.com',
-      to: 'mark2@gmail.com',
+      from: 'example@gmail.com',
+      to: 'mark_giuliana@gmail.com',
       subject: 'the subject 2',
       body: '',
     }
