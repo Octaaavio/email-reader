@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { EmailService } from '../../services/email.service';
 import { Email } from '../../interfaces/email';
 
 @Component({
@@ -8,14 +10,16 @@ import { Email } from '../../interfaces/email';
 })
 export class EmailComponent implements OnInit {
 
-  email: Email;
   emailList: Email[] = [];
+  index: number;
 
-  constructor() {
-    this.email = { from: "", to: "", subject: "", body: "" }
-  }
+  constructor(private service: EmailService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
+    this.emailList = this.service.getEmailList();
+    this.route.paramMap.subscribe(params => {
+      this.index = parseInt(params.get('index'), 10);
+    })
   }
 
 }
