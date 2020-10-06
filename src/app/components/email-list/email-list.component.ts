@@ -11,7 +11,6 @@ export class EmailListComponent implements OnInit {
   emailList;
   router;
   extra: string;
-  emailIndex: number;
 
   constructor(service: EmailService, router: Router, private route: ActivatedRoute) {
     this.emailList = service.getEmailList();
@@ -20,7 +19,6 @@ export class EmailListComponent implements OnInit {
 
   ngOnInit(): void {
     let params = this.route.snapshot.paramMap;
-    this.emailIndex = +params.get('index');
     this.extra = "";
   }
 
